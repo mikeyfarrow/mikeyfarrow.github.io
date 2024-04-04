@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>Overview of files</title>
+   <style>
+      /* From extension vscode.github */
+      /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+      .vscode-dark img[src$=\#gh-light-mode-only],
+      .vscode-light img[src$=\#gh-dark-mode-only],
+      .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+      .vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+         display: none;
+      }
+   </style>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+   <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet"
+      type="text/css">
+   <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+   <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+   <style>
+      body {
+         font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+         font-size: 14px;
+         line-height: 1.6;
+      }
+   </style>
+   <style>
+      .task-list-item {
+         list-style-type: none;
+      }
+
+      .task-list-item-checkbox {
+         margin-left: -20px;
+         vertical-align: middle;
+         pointer-events: none;
+      }
+   </style>
+   <style>
+      :root {
+         --color-note: #0969da;
+         --color-tip: #1a7f37;
+         --color-warning: #9a6700;
+         --color-severe: #bc4c00;
+         --color-caution: #d1242f;
+         --color-important: #8250df;
+      }
+   </style>
+   <style>
+      @media (prefers-color-scheme: dark) {
+         :root {
+            --color-note: #2f81f7;
+            --color-tip: #3fb950;
+            --color-warning: #d29922;
+            --color-severe: #db6d28;
+            --color-caution: #f85149;
+            --color-important: #a371f7;
+         }
+      }
+   </style>
+   <style>
+      .markdown-alert {
+         padding: 0.5rem 1rem;
+         margin-bottom: 16px;
+         color: inherit;
+         border-left: .25em solid #888;
+      }
+
+      .markdown-alert>:first-child {
+         margin-top: 0
+      }
+
+      .markdown-alert>:last-child {
+         margin-bottom: 0
+      }
+
+      .markdown-alert .markdown-alert-title {
+         display: flex;
+         font-weight: 500;
+         align-items: center;
+         line-height: 1
+      }
+
+      .markdown-alert .markdown-alert-title .octicon {
+         margin-right: 0.5rem;
+         display: inline-block;
+         overflow: visible !important;
+         vertical-align: text-bottom;
+         fill: currentColor;
+      }
+
+      .markdown-alert.markdown-alert-note {
+         border-left-color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-note .markdown-alert-title {
+         color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-important {
+         border-left-color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-important .markdown-alert-title {
+         color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-warning {
+         border-left-color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-warning .markdown-alert-title {
+         color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-tip {
+         border-left-color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-tip .markdown-alert-title {
+         color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-caution {
+         border-left-color: var(--color-caution);
+      }
+
+      .markdown-alert.markdown-alert-caution .markdown-alert-title {
+         color: var(--color-caution);
+      }
+   </style>
+
+</head>
+
+<body class="vscode-body vscode-light">
+   <h1 id="overview-of-files">Overview of files</h1>
+   <p>
+      Download the provided files here: <code><a href="./tuning-in-C.zip">tuning-in-C.zip</a></code>
+   </p>
+   <p>Most of the provided files are here for convenience and there is nothing for
+      you to do. The only file in which you are being asked to write any code is
+      <code>tune.c</code>.
+   </p>
+   <h3 id="provided-files">Provided files</h3>
+   <ul>
+      <li><strong><code>tune.c</code></strong> is where you will write your code. Detailed instructions are found inside
+         that file.</li>
+      <li><strong><code>tune.h</code></strong> is the header file for <code>tune.c</code>. This is definitely not
+         intended to be an important part of this &quot;homework&quot; but I will provide some info: Header files allow
+         us to write code that uses functions that are implemented in a different <code>.c</code> file. Technically we
+         don't even need access to the file <code>tune.c</code> in order to get <code>gcc</code> to &quot;assemble&quot;
+         a program that includes <code>tune.h</code>. But to get <code>gcc</code> to actually produce an executable, we
+         will need to provide the implementation of <code>tune.h</code> (either as source code or as a <code>.o</code>
+         file). One nice thing this means is that you can do things like swap out implementations of a header file at
+         &quot;link time&quot; without having to recompile your code. It is a lovely little layer of indirection that
+         allows for all kinds of nice code reuse.</li>
+      <li><strong><code>verify-solution.c</code></strong> is the program that you will run to test your code. It is
+         compiled and linked using the <code>Makefile</code>. The executable is saved to <code>bin/tune</code>.</li>
+      <li><strong><code>Makefile</code></strong> is a &quot;build&quot; tool that allows us to automate certain tasks
+         relating to compiling. You don't need to read or understand this file, but its existence offers you some
+         conveniences: normally you would need to manually invoke <code>gcc</code> to produce an executable. Thanks to
+         Makefile, if you open a terminal in the same directory as the Makefile, you can instead use these commands:
+         <ul>
+            <li><code>make</code>: this will compile and link the code, saving the executable to the file
+               <code>bin/tune</code> i.e. the executable is named <code>tune</code> and it is saved inside the
+               <code>bin</code> directory.</li>
+            <li><code>make test</code>: same as <code>make</code> plus it runs <code>bin/tune</code></li>
+            <li><code>make clean</code>: this deletes all binaries and build artifacts to give you a fresh start</li>
+         </ul>
+      </li>
+   </ul>
+   <h1 id="workflow-and-sample-execution">Workflow and sample execution</h1>
+   <p>As you implement the code inside the file <code>tune.c</code>, you should compile and run your code using the
+      commands from the <code>Makefile</code>.</p>
+   <p>The output below shows examples of how to build and run the code. It shows the command and the console output that
+      would result from a correct solution.</p>
+   <pre><code class="language-console"><span class="hljs-meta prompt_">$ </span><span class="language-bash">make</span>
+mkdir -p bin
+gcc -o bin/tune verify-solution.c tune.c
+<span class="hljs-meta prompt_">
+$ </span><span class="language-bash">bin/tune</span>
+No command line argument was provided, so we use A3
+Requesting an octave beginning at 220.00
+220.00
+233.08
+246.94
+261.63
+277.18
+293.66
+311.13
+329.63
+349.23
+369.99
+392.00
+415.30
+440.00
+<span class="hljs-meta prompt_">
+$ </span><span class="language-bash">bin/tune 100</span>
+Requesting an octave beginning at 100.00
+100.00
+105.95
+112.25
+118.92
+125.99
+133.48
+141.42
+149.83
+158.74
+168.18
+178.18
+188.77
+200.00
+</code></pre>
+   <p>Notice that after I run <code>make</code>, I can invoke <code>bin/tune</code> two different ways. I can say
+      <code>bin/tune</code> and it will use a default value for the root note frequency. I can also choose to provide my
+      own value for the frequency when at the terminal by saying <code>bin/tune 100</code>. This is called a
+      &quot;command-line argument&quot; and you can see how I do this in <code>verify-solution.c</code>.</p>
+   <h3 id="some-details-about-the-twelve_tet_octave-function">Some details about the <code>twelve_TET_octave</code>
+      function</h3>
+   <p>You should read the other files for the full details, but I want to give an example here of exactly how the
+      function should behave.</p>
+   <p>You are writing a function for someone else to use. The example below shows how someone else's code might use your
+      function.</p>
+   <p>If someone were to define an array called <code>notes</code> and then call the function as follows:</p>
+   <pre><code class="language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;tune.h&quot;</span></span>
+
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> OCTAVE_WIDTH 12</span>
+
+<span class="hljs-type">double</span> notes[OCTAVE_WIDTH + <span class="hljs-number">1</span>];
+twelve_TET_octave(<span class="hljs-number">220.0</span>, notes);
+</code></pre>
+   <p>Then the values in their <code>notes</code> array should be the following (note that I have
+      truncated the last few decimal places for readability):</p>
+   <pre><code class="language-c">[ <span class="hljs-number">220.00</span>,  <span class="hljs-number">233.08</span>,  <span class="hljs-number">246.94</span>,  <span class="hljs-number">261.63</span>,  <span class="hljs-number">277.18</span>,  <span class="hljs-number">293.66</span>,  <span class="hljs-number">311.13</span>,
+  <span class="hljs-number">329.63</span>,  <span class="hljs-number">349.23</span>,  <span class="hljs-number">369.99</span>,  <span class="hljs-number">392.00</span>,  <span class="hljs-number">415.30</span>,  <span class="hljs-number">440.00</span> ]
+</code></pre>
+   <p>It is your job to populate this array. Notice that there are thirteen elements in the array even though an octave
+      is only twelve notes. This is because the root appears twice, once at the start and once at the end. This should
+      allow you to quickly check the correctness of your output: the final element should always be twice the first
+      element.</p>
+   <h1 id="mathematical-details-of-12-tone-equal-temperament">Mathematical details of 12-tone equal temperament</h1>
+   <p>You will need to use the library <code>math.h</code> which is already included in <code>tune.c</code> because
+      computing exponents is required in order to perform 12-tone equal temperament. Exponents are computed using the
+      function <code>pow(base, exponent)</code>. For example, 10<sup>2</sup> would be computed as
+      <code>pow(10, 2)</code>.</p>
+   <p>In twelve-tone equal temperament, the ratio between the frequencies of two adjacent semitones is the twelfth root
+      of two, which is the same as two raised to the power of 1/12. In <code>C</code> code, that is
+      <code>pow(2, 1/12.0)</code>.</p>
+   <p>This means that given any frequency <code>f</code>, in order to find the frequency that is one semitone higher
+      than <code>f</code>, we simply multiply <code>f</code> by <code>pow(2, 1/12.0)</code>.</p>
+
+   <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+
+</body>
+
+</html>
