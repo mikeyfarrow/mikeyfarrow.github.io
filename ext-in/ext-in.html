@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>Dual External Input Eurorack Module</title>
+   <style>
+      /* From extension vscode.github */
+      /*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+      .vscode-dark img[src$=\#gh-light-mode-only],
+      .vscode-light img[src$=\#gh-dark-mode-only],
+      .vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+      .vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+         display: none;
+      }
+   </style>
+
+   <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+   <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+   <style>
+      body {
+         font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+         font-size: 14px;
+         line-height: 1.6;
+      }
+   </style>
+   <style>
+      .task-list-item {
+         list-style-type: none;
+      }
+
+      .task-list-item-checkbox {
+         margin-left: -20px;
+         vertical-align: middle;
+         pointer-events: none;
+      }
+   </style>
+   <style>
+      :root {
+         --color-note: #0969da;
+         --color-tip: #1a7f37;
+         --color-warning: #9a6700;
+         --color-severe: #bc4c00;
+         --color-caution: #d1242f;
+         --color-important: #8250df;
+      }
+   </style>
+   <style>
+      @media (prefers-color-scheme: dark) {
+         :root {
+            --color-note: #2f81f7;
+            --color-tip: #3fb950;
+            --color-warning: #d29922;
+            --color-severe: #db6d28;
+            --color-caution: #f85149;
+            --color-important: #a371f7;
+         }
+      }
+   </style>
+   <style>
+      .markdown-alert {
+         padding: 0.5rem 1rem;
+         margin-bottom: 16px;
+         color: inherit;
+         border-left: .25em solid #888;
+      }
+
+      .markdown-alert>:first-child {
+         margin-top: 0
+      }
+
+      .markdown-alert>:last-child {
+         margin-bottom: 0
+      }
+
+      .markdown-alert .markdown-alert-title {
+         display: flex;
+         font-weight: 500;
+         align-items: center;
+         line-height: 1
+      }
+
+      .markdown-alert .markdown-alert-title .octicon {
+         margin-right: 0.5rem;
+         display: inline-block;
+         overflow: visible !important;
+         vertical-align: text-bottom;
+         fill: currentColor;
+      }
+
+      .markdown-alert.markdown-alert-note {
+         border-left-color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-note .markdown-alert-title {
+         color: var(--color-note);
+      }
+
+      .markdown-alert.markdown-alert-important {
+         border-left-color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-important .markdown-alert-title {
+         color: var(--color-important);
+      }
+
+      .markdown-alert.markdown-alert-warning {
+         border-left-color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-warning .markdown-alert-title {
+         color: var(--color-warning);
+      }
+
+      .markdown-alert.markdown-alert-tip {
+         border-left-color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-tip .markdown-alert-title {
+         color: var(--color-tip);
+      }
+
+      .markdown-alert.markdown-alert-caution {
+         border-left-color: var(--color-caution);
+      }
+
+      .markdown-alert.markdown-alert-caution .markdown-alert-title {
+         color: var(--color-caution);
+      }
+
+      .overview, .left {
+         width: 50%;
+         float: left;
+         overflow:auto;
+      }
+
+      .left {
+         max-width: 100px;
+         padding-right: 2em;
+      }
+
+      .clear {
+         clear: both;
+      }
+
+      body {
+         width: 80%;
+         margin: auto;
+      }
+   </style>
+
+</head>
+
+<body class="vscode-body vscode-light">
+   <h1 id="dual-external-input-eurorack-module">Dual External Input Eurorack Module</h1>
+
+   <img src="./resources/assembled.PNG" alt="assembled" class="left">
+   <div class="overview">
+      <h2 id="overview">Overview</h2>
+      <p>
+         This is a 4hp Eurorack module containing two separate high-gain pre-amps for high impedance sources like electric
+         guitars.
+      </p>
+      <p>The circuit is heavily inspired by the pre-amp section of the Mutable Instruments module <em>Ears</em> (see <a
+            href="https://pichenettes.github.io/mutable-instruments-documentation/modules/ears/downloads/ears_v40.pdf">the
+            schematic for MI's Ears</a>). There are a couple differences worth noting:</p>
+      <ul>
+         <li>To fit the circuit on a single PCB with through-hole components, I have jettisoned all the safety diodes:
+            <ul>
+               <li>no reverse polarity protection for the power</li>
+               <li>no diode limiters for the input like you see in the <em>Ears</em> schematic</li>
+            </ul>
+         </li>
+         <li>This schematic uses different values for the audio coupling capacitors than <em>Ears</em>: 0.1µF instead of
+            4.7µF.
+            <ul>
+               <li>MI's frequency range is unnecessarily wide for our application and it is easier to find capacitors in
+                  high quality materials like film if we decrease the capacitance.</li>
+               <li>Our -3dB rolloff point is 1.5Hz, still plenty low.</li>
+               <li>If you wish to use this module to amplify CVs, you must install jumpers instead of the coupling
+                  capacitors.</li>
+            </ul>
+         </li>
+      </ul>
+      
+   </div>
+   <div class="clear"></div>
+   
+   <h2 id="other-notes-on-the-circuit">Other notes on the circuit:</h2>
+   <ul>
+      <li>A single TL072 is used but obviously this may be substituted</li>
+      <li>Each channel has a gain control pot
+         <ul>
+            <li>Max gain can be altered by using different resistor values. See schematic for details.</li>
+         </ul>
+      </li>
+      <li>The switch allows you to select between two different max gain values for channel 1</li>
+      <li>When input 2 is unpatched, the signal from input 1 is normalled to input 2
+         <ul>
+            <li>This means that by default the unit will operate as an active mult with individual gain controls.</li>
+         </ul>
+      </li>
+   </ul>
+   <h2 id="bill-of-materials">Bill of Materials</h2>
+   <p>Here is a <a href="https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=e6ca875640">Mouser cart</a>
+      that has everything but the jacks and the potentiometers.</p>
+   <p>The subminiature switch can be found for cheaper if you source it from wherever you source your Thonkiconn jacks
+      and snap-in pots.</p>
+   <table>
+      <thead>
+         <tr>
+            <th>Reference</th>
+            <th>Qty</th>
+            <th>Value</th>
+            <th>Footprint</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>C1,C2</td>
+            <td>2</td>
+            <td>68p</td>
+            <td>C0G/NP0 ceramic D=5mm x W=2.5mm x P=2.5mm</td>
+         </tr>
+         <tr>
+            <td>C3,C4,C5,C6</td>
+            <td>4</td>
+            <td>0.1u</td>
+            <td>Film capacitor L=4.6mm x W=2.0mm x P=2.5mm</td>
+         </tr>
+         <tr>
+            <td>C7,C8</td>
+            <td>2</td>
+            <td>22p</td>
+            <td>C0G/NP0 ceramic D=5mm x W=2.5mm x P=2.5mm</td>
+         </tr>
+         <tr>
+            <td>C9,C10</td>
+            <td>2</td>
+            <td>10u</td>
+            <td>Alum. electrolytic, D=5.0mm x P=2.5mm</td>
+         </tr>
+         <tr>
+            <td>C11,C12</td>
+            <td>2</td>
+            <td>100n</td>
+            <td>any ceramic D=5mm x W=2.5mm x P=2.5mm</td>
+         </tr>
+         <tr>
+            <td>J1,J2,J3,J4</td>
+            <td>4</td>
+            <td>....</td>
+            <td>Thonkiconn jack</td>
+         </tr>
+         <tr>
+            <td>J5</td>
+            <td>1</td>
+            <td>PWR_IN</td>
+            <td>eurorack IDC power ribbon header</td>
+         </tr>
+         <tr>
+            <td>R1,R3,R4,R9</td>
+            <td>4</td>
+            <td>510</td>
+            <td>resistor 1/4w</td>
+         </tr>
+         <tr>
+            <td>R2</td>
+            <td>1</td>
+            <td>250</td>
+            <td>resistor 1/4w</td>
+         </tr>
+         <tr>
+            <td>R5,R6</td>
+            <td>2</td>
+            <td>1M</td>
+            <td>resistor 1/4w</td>
+         </tr>
+         <tr>
+            <td>R7,R8,R10,R11</td>
+            <td>4</td>
+            <td>10k</td>
+            <td>resistor 1/4w</td>
+         </tr>
+         <tr>
+            <td>RV1,RV2</td>
+            <td>2</td>
+            <td>50kB</td>
+            <td>snap-in potentiometer like RD901F</td>
+         </tr>
+         <tr>
+            <td>SW1</td>
+            <td>1</td>
+            <td>gain_sel_1</td>
+            <td>SPDT on-on subminiature</td>
+         </tr>
+         <tr>
+            <td>U1</td>
+            <td>1</td>
+            <td>TL072</td>
+            <td>Package_DIP:DIP-8_W7.62mm</td>
+         </tr>
+      </tbody>
+   </table>
+   <h2 id="schematic">Schematic</h2>
+   <p>Here is a <a href="./resources/schematic.pdf">PDF of the schematic</a>.</p>
+   <p><img src="file:///c:\Users\mkfar\Desktop\Enlistments\mikeyfarrow.github.io\ext-in\resources\schematic.png"
+         alt="schem"></p>
+
+
+
+</body>
+
+</html>
