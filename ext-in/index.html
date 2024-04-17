@@ -134,10 +134,11 @@
          color: var(--color-caution);
       }
 
-      .overview, .left {
+      .overview,
+      .left {
          width: 50%;
          float: left;
-         overflow:auto;
+         overflow: auto;
       }
 
       .left {
@@ -153,6 +154,10 @@
          width: 80%;
          margin: auto;
       }
+
+      .pcb img {
+         max-width: 250px;
+      }
    </style>
 
 </head>
@@ -164,7 +169,8 @@
    <div class="overview">
       <h2 id="overview">Overview</h2>
       <p>
-         This is a 4hp Eurorack module containing two separate high-gain pre-amps for high impedance sources like electric
+         This is a 4hp Eurorack module containing two separate high-gain pre-amps for high impedance sources like
+         electric
          guitars.
       </p>
       <p>The circuit is heavily inspired by the pre-amp section of the Mutable Instruments module <em>Ears</em> (see <a
@@ -188,10 +194,10 @@
             </ul>
          </li>
       </ul>
-      
+
    </div>
    <div class="clear"></div>
-   
+
    <h2 id="other-notes-on-the-circuit">Other notes on the circuit:</h2>
    <ul>
       <li>A single TL072 is used but obviously this may be substituted</li>
@@ -310,9 +316,18 @@
    </table>
    <h2 id="schematic">Schematic</h2>
    <p>Here is a <a href="./resources/schematic.pdf">PDF of the schematic</a>.</p>
-   <p><img src="./resources/schematic.png"
-         alt="schem"></p>
+   <p><img src="./resources/schematic.png" alt="schem"></p>
+   <div class="pcb">
+      <h2>PCB images</h2>
+      <h3>front</h3>
+      <a href="resources/pcb-front-populated.png"><img src="resources/pcb-front-populated.png" alt=""></a>
+      <a href="resources/pcb-front-unpopulated.png"><img src="resources/pcb-front-unpopulated.png" alt=""></a>
 
+
+      <h3>back</h3>
+      <a href="resources/pcb-back-populated.png"><img src="resources/pcb-back-populated.png" alt=""></a>
+      <a href="resources/pcb-back-unpopulated.png"><img src="resources/pcb-back-unpopulated.png" alt=""></a>
+   </div>
 
 
 </body>
