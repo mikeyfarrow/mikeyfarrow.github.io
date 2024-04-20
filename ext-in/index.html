@@ -134,33 +134,24 @@
          color: var(--color-caution);
       }
 
-      .overview,
-      .left {
-         display: inline-block;
-         vertical-align: top;
-      }
-
-      .overview {
-         max-width: 80%;
-      }
-
-      .left {
-         width: 10%;
-         min-width: 100px;
-         padding-right: 2em;
-      }
-
-      .clear {
-         clear: both;
-      }
 
       body {
          width: 80%;
          margin: auto;
       }
 
+      .module img {
+         float: left;
+         max-height: 500px;
+         margin-right: 2em;
+      }
+
       .pcb img {
          max-width: 250px;
+      }
+
+      ul {
+         overflow: hidden;
       }
    </style>
 
@@ -169,11 +160,11 @@
 <body class="vscode-body vscode-light">
    <h1 id="dual-external-input-eurorack-module">Dual External Input Eurorack Module</h1>
 
-   <h2 id="overview">Overview</h2>
-   <img src="./resources/assembled.PNG" alt="assembled" class="left">
-   <div class="overview">
+   <div class="module">
+      <h2 id="overview">Overview</h2>
+      <img src="./resources/assembled.PNG" alt="assembled" class="module">
       <p>
-         This is a 4hp Eurorack module for drug-fueled anarchists containing two separate high-gain pre-amps for high-impedance sources like electric guitars.
+         This is a 4hp Eurorack module containing two separate high-gain pre-amps for high-impedance sources like electric guitars.
       </p>
       <p>
          <ul>
@@ -204,25 +195,29 @@
          </li>
       </ul>
 
-   </div>
    
-   <div class="clear"></div>
 
-   <h2 id="other-notes-on-the-circuit">Other notes on the circuit:</h2>
-   <ul>
-      <li>A single TL072 is used but obviously this may be substituted</li>
-      <li>Each channel has a gain control pot
-         <ul>
-            <li>Max gain can be altered by using different resistor values. See schematic for details.</li>
-         </ul>
-      </li>
-      <li>The switch allows you to select between two different max gain values for channel 1</li>
-      <li>When input 2 is unpatched, the signal from input 1 is normalled to input 2
-         <ul>
-            <li>This means that by default the unit will operate as an active mult with individual gain controls.</li>
-         </ul>
-      </li>
-   </ul>
+
+      <h2 id="other-notes-on-the-circuit">Other notes on the circuit:</h2>
+      <ul>
+         <li>A single TL072 is used but obviously this may be substituted</li>
+         <li>Each channel has a gain control pot
+            <ul>
+               <li>Max gain can be altered by using different resistor values. See schematic for details.</li>
+            </ul>
+         </li>
+         <li>The switch allows you to select between two different max gain values for channel 1</li>
+         <li>When input 2 is unpatched, the signal from input 1 is normalled to input 2
+            <ul>
+               <li>This means that by default the unit will operate as an active mult with individual gain controls.</li>
+            </ul>
+         </li>
+      </ul>
+      
+   </div>
+
+
+
    <h2 id="bill-of-materials">Bill of Materials</h2>
    <p>Here is a <a href="https://www.mouser.com/ProjectManager/ProjectDetail.aspx?AccessID=e6ca875640">Mouser cart</a>
       that has everything but the jacks and the potentiometers.</p>
