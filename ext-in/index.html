@@ -136,13 +136,17 @@
 
       .overview,
       .left {
-         width: 50%;
-         float: left;
-         overflow: auto;
+         display: inline-block;
+         vertical-align: top;
+      }
+
+      .overview {
+         max-width: 80%;
       }
 
       .left {
-         max-width: 100px;
+         width: 10%;
+         min-width: 100px;
          padding-right: 2em;
       }
 
@@ -165,13 +169,19 @@
 <body class="vscode-body vscode-light">
    <h1 id="dual-external-input-eurorack-module">Dual External Input Eurorack Module</h1>
 
+   <h2 id="overview">Overview</h2>
    <img src="./resources/assembled.PNG" alt="assembled" class="left">
    <div class="overview">
-      <h2 id="overview">Overview</h2>
       <p>
          This is a 4hp Eurorack module containing two separate high-gain pre-amps for high impedance sources like
          electric
          guitars.
+      </p>
+      <p>
+         <ul>
+            <li><b>Panel: </b> 1.6mm aluminum with black silkscreen</li>
+            <li><b>PCB: </b> Lead-free HASL surface finish</li>
+         </ul>
       </p>
       <p>The circuit is heavily inspired by the pre-amp section of the Mutable Instruments module <em>Ears</em> (see <a
             href="https://pichenettes.github.io/mutable-instruments-documentation/modules/ears/downloads/ears_v40.pdf">the
@@ -196,6 +206,7 @@
       </ul>
 
    </div>
+   
    <div class="clear"></div>
 
    <h2 id="other-notes-on-the-circuit">Other notes on the circuit:</h2>
