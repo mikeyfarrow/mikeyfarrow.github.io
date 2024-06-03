@@ -1,0 +1,4 @@
+nn/speech_waves_train_4k.npy filter=lfs diff=lfs merge=lfs -text
+nn/speech_waves_train_8k.npy filter=lfs diff=lfs merge=lfs -text
+nn/speech_waves_test_400.npy filter=lfs diff=lfs merge=lfs -text
+nn/speech_waves_test_800.npy filter=lfs diff=lfs merge=lfs -text
