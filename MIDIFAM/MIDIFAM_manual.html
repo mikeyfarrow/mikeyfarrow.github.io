@@ -3,9 +3,41 @@
 MIDIFAM User Manual
 ===================
 
-# MIDI Channel Preferences
+# Overview
 
-Press the "Learn" button to set your MIDI channel preferences. There are three selections to make and they will be presented in the following order:
+The MIDIFAM module is two modules in one, containing both
+
+1. A MIDI interface to control a DFAM sequencer using a single patch cable
+2. A dual MIDI-to-CV converter (16-bit DAC per channel) with a robust MIDI implementation including portamento, vibrato, legato (gate vs. trigger), monophonic or duophonic modes, and more 
+
+
+## MIDI Control of DFAM Sequencer
+
+There are two modes of DFAM sequencer control determined by the *Mode* toggle switch. Control of the DFAM sequencer is handled entirely by the **MIDIFAM's *Adv/Clock* output**.
+
+### ***Note On* Mode**
+
+With the MIDIFAM's toggle switch set to *Note On* you can trigger any individual step of the DFAM sequencer with MIDI *Note On* messages. This gives you the freedom to sequence the DFAM externally or to control the DFAM's sequencer with a keyboard or arpeggiator. Possibilites are unlimited.
+
+The default MIDI channel assigned to the *Adv/Clock* output in *Note On* mode is MIDI channel 10, but this can be re-assigned to any MIDI channel. See the *MIDI Channel Preferences* section below for details.
+
+### ***Clock* Mode**
+
+Set the toggle switch to *Clock* to place the DFAM sequencer under the control of an external MIDI transport. The DFAM sequencer will run according to MIDI Start, Stop, and Continue messages, making the DFAM a MIDI-compliant sequencer (!). When the module receives a MIDI *Start* message, the DFAM sequencer will always begin playing from step 1. On MIDI *Continue* messages, the DFAM sequencer will begin from wherever it left off.
+
+*Clock* mode also features a **clock divider/multiplier** which can be configured using MIDI Control Change messages (CC number 83). Multiply or divide the duration of a DFAM step by a value relative to the MIDI clock. 
+
+
+## Dual MIDI-to-CV Converter
+
+explain blah blah todo todo todo...
+- 16 bit dacs
+- MIDI implementations
+- polyphony mode
+
+## MIDI Channel Preferences
+
+Press the "Learn" button to set your MIDI channel preferences. The MIDIFAM has three MIDI channel assignments (one for each CV channel and one for the Adv/Clock output) and so there are three selections to make. The selections will be presented in the following order:
 
 1. CV *A*
 2. CV *B*
@@ -105,10 +137,12 @@ When playback of the ``.mid`` file is complete, the module will restart and is r
 TODO: ...
 
 <script>
-document.querySelector("h1").style.display = "None"
 
-document.querySelector("body").style.width = "80%";
-document.querySelector("body").style.margin = "auto";
+window.addEventListener('DOMContentLoaded',function () {
+    document.querySelector("h1").style.display = "None"
+    document.querySelector("body").style.width = "80%";
+    document.querySelector("body").style.margin = "auto";
+});
 
 
 
