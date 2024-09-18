@@ -3,7 +3,6 @@
 MIDIFAM User Manual
 ===================
 
-
 # MIDI Channel Preferences
 
 Press the "Learn" button to set your MIDI channel preferences. There are three selections to make and they will be presented in the following order:
@@ -75,7 +74,28 @@ These will only apply when they are sent on the MIDI channel to which the CV out
 |126 | Mono Mode on  |                         | Each CV output is independent and operates as a single monophonic output |
 |127 | Poly Mode on  |                         | Both CV outputs are combined for duophony |
 
-<script>
 
+## Appendix
+
+### Firmware Update procedure
+
+The module can receive firmware updates via the MIDI input on its front panel. You can download the ``.mid`` file containing the latest firmware from [no link](insert link todo). You will need a device capable of transmitting MIDI "System Exclusive" messages. The software update procedure is as follows:
+
+1. Connect the output of your MIDI device to the MIDI input of the MIDIFAM
+2. Power on the MIDIFAM **while holding down both push buttons**
+3. All three LEDs will blink red three times indicating that the module has entered self-programming mode.
+    - When the top two LEDs turn off and the **bottom LED is green, the module is ready to be updated**.
+4. Play the ``.mid`` file
+    - The MIDIFAM's bottom LED will blink green to indicate progress
+
+When playback of the ``.mid`` file is complete, the module will restart and is ready for use. 
+
+
+### V/oct Calibration Procedure
+
+TODO: ...
+
+<script>
 document.querySelector("h1").style.display = "None" 
-</script><noscript>
+</script>
+<noscript>
