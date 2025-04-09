@@ -1,12 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weird Vibes Eurorack Modules</title>
+    <title>Mikey Farrow - Audio Electronics</title>
+    <style>
+.clear {
+    clear: both;
+}
+
+h2 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.image-container {
+    display: inline-block;
+    height: 400px;
+}
+
+.image-container img {
+    max-height: 100%;
+}
+
+.image-container.shrink {
+    padding: 3px 0;
+}
+
+.module-desc img {
+    max-height: 400px;
+    float: left;
+    padding: 1em 0 1em 1em;
+}
+
+#preamp img {
+    max-height: 350px;
+}
+
+.module-desc img:last-of-type {
+    margin-right: 1em;
+}
+
+.module-desc img.pcb {
+    margin: 3% 1em;
+    max-height: 350px;
+}
+
+.module-desc h3 {
+    margin-left: 1rem;
+}
+
+.module-desc {
+    clear: left;
+    overflow: auto;
+    margin-top: 1em;
+    padding-top: 1em;
+    border-top: 1px solid black;
+}
+
+.details {
+    padding: 2em 1em 1em 1em;
+}
+
+img.bboard {
+    float: none;
+    max-width: 95%;
+}
+
+img.softstart {
+    max-height: 300px;
+}
+
+.nav-title {
+    font-weight: bold;
+}
+
+#electronics-nav > ul {
+    list-style: none;
+    padding: 0;
+}
+
+#electronics-nav ul ul {
+    padding-left: 2em;
+    list-style-type: disc;
+}
+
+.module-desc ul {
+    padding-left: 2em;
+}
+
+.module-desc div.details {
+    float: left;
+    width: 85%;
+}
+
+.module-desc.misc div.details {
+    width: 60%;
+}
+
+#matrix div.details {
+    width: 60%;
+}
+
+#busboard div.details {
+    width: 100%;
+}
+#shades div.details, #spring div.details {
+    width: 80%;
+}
+
+#softstart div.details {
+    float: none;
+    width: 100%;
+    padding-top: 1em;
+}
+
+#preamp div.details {
+    float: none;
+    width: 100%;
+}
+
+#preamp ul {
+    list-style-position: inside;
+}
+    </style>
 </head>
+
 <body>
-    <h1>Weird Vibes Eurorack Modules</h1>
-    <p>Hello.</p>
+
+    <div class="container-md">
+
+        <div id="main">
+            <h1>Weird Vibes Audio Electronics</h1>
+
+            <p>
+                Most of the electronics are synthesis modules which conform to <a href="https://doepfer.de/a100_man/a100t_e.htm">Dieter Döpfer's Eurorack Specification</a>.
+                I created these designs using AutoDesk EAGLE and KiCad and the schematics and design files are available free.
+                Contact me if you are interested in ordering PCBs and/or panels: I currently have bare PCBs and panels for all of the
+                modules listed below and have built and tested each of the designs. I am always interested in working on new modules.
+            </p>
+
+            <p>
+                The most recent Eurorack module I made is one which will be very interesting to owners of the Moog DFAM. It allows the DFAM to work as a MIDI-compliant sequencer and has two channels of MIDI-to-V/oct.
+                It is still in development but I have working prototypes. Read more about it in the <a href="../MIDIFAM/MIDIFAM_manual.html">MIDIFAM documentation</a>.
+            </p>
+
+            <p>TODO: add the Dual External Input and the Dual VCA</p>
+
+            <div id="electronics-nav">
+                <ul>
+                    <li>
+                        <span class="nav-title">Eurorack Synthesizer Modules</span>
+                        <ul>
+                            <li><a href="#attenuators">Passive Attenuators</a></li>
+                            <li><a href="#vcs">Dual Voltage-Controlled Switch</a></li>
+                            <li><a href="#envgen">AD/AR Envelope Generator</a></li>
+                            <li><a href="#dualvca">Dual Linear VCA</a></li>
+                            <li><a href="#lpf">Low Pass Filter</a></li>
+                            <li><a href="#mult">Buffered Multiples</a></li>
+                            <li><a href="#digiverb">Digital Reverb</a></li>
+                            <li><a href="#matrix">Matrix Mixer</a> (panel only)</li>
+                            <li><a href="#spring">MTM Spring Reverb Interface</a></li>
+                            <li><a href="#shades">Shades (MI clone)</a> (panel only)</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="nav-title">Miscellaneous Electronics</span>
+                        <ul>
+                            <li><a href="#preamp">Balanced microphone preamplifier (phantom-powered)</a></li>
+                            <li><a href="#busboard">Eurorack busboard</a></li>
+                            <li><a href="#softstart">Power-on delay ("soft start")</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>            
+
+            <div class="clear"></div>
+            <h2>Eurorack Synthesizer Modules</h2>
+            <div id="modules">
+                <div class="image-container">
+                    <a href="#attenuators">
+                        <img src="./static/modules/attenuators.png" alt="Attenuators module">
+                    </a>
+                </div>
+                <div class="image-container shrink">
+                    <a href="#vcs">
+                        <img src="./static/modules/dual-vcs.PNG" alt="dual voltage-controlled switch module">
+                    </a>
+                </div>
+                <div class="image-container">
+                    <a href="#envgen">
+                        <img src="./static/modules/AD-AR-EG.PNG" alt="Attack-Decay/Attack-Release module">
+                    </a>
+                </div>
+                <div class="image-container">
+                    <a href="#dualvca">
+                        <img src="./static/modules/dual-vca.png" alt="dual voltage-controlled amplifier module">
+                    </a>
+                </div>
+                <div class="image-container">
+                    <a href="#lpf">
+                        <img src="./static/modules/LPF-ssm2044.PNG" alt="low pass filter module">
+                    </a>
+                </div>
+                <div class="image-container shrink">
+                    <a href="#mult">
+                        <img src="./static/modules/buffered-mult.PNG" alt="buffered multiple module">
+                    </a>
+                </div>
+                <div class="image-container">
+                    <a href="#digiverb">
+                        <img src="./static/modules/BTDR-3_digital-reverb.PNG" alt="digital reverb module">
+                    </a>
+                </div>
+                <div class="image-container">
+                    <a href="#matrix">
+                        <img src="./static/modules/matrix-mixer.png" alt="matrix mixer module">
+                    </a>
+                </div>
+                <div class="image-container">
+                    <a href="#spring">
+                        <img src="./static/modules/mtm-spring.PNG" alt="spring reverb interface">
+                    </a>
+                </div>
+                <div class="image-container">
+                    <a href="#shades">
+                        <img src="./static/modules/shades.PNG" alt="shades module">
+                    </a>
+                </div>
+            </div>
+
+            <div class="module-desc" id="attenuators">
+                <h3>Passive Attenuators</h3>
+                <img src="./static/modules/attenuators.png" alt="Attenuators module">
+                <div class="details">
+                    <p>
+                        <strong>EAGLE files:</strong>
+                        <a href="https://github.com/mkfarrow/Eurorack_3x-Passive-Attenuators">3x Passive Attenuators Github repo</a>
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, no power required</p>
+                    <p>
+                        Three passive attenuators. This is perhaps the simplest possible Eurorack module: there are no active parts
+                        like op-amps and no power supply is required. At each output socket will appear the attenuated input signal
+                        (i.e. zero at fully counter-clockwise and max. level at fully clockwise).
+                    </p>
+                    <p>
+                        The attenuators can be used to adjust the level of both CV and audio signals.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module-desc" id="vcs">
+                <h3>Dual Voltage-Controlled Switch</h3>
+                <img src="./static/modules/dual-vcs.PNG" alt="VCS module">
+                <div class="details">
+                    <p>
+                        <strong>EAGLE files:</strong>
+                        <a href="https://github.com/mkfarrow/Eurorack_Dual-VCS">Dual VCS Github repo</a>
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        This module contains two separate voltage-controlled switches. Each switch is bi-directional. This means that
+                        they can be used to connect a single input to either one of two outputs <strong>or</strong> to connect either
+                        of two inputs to a single output. When the digital control voltage at the CV input is low, I/O1 is active; when
+                        CV is high, then I/O2 is active.
+                    </p>
+                    <p>
+                        The voltage-controlled switch is implemented using a CMOS analog multiplexer DG409
+                        (<a href="https://www.vishay.com/docs/70062/dg408.pdf">see datasheet</a>) which means
+                        that it can be used to switch at frequencies well into the audible portion of the frequency spectrum.
+                    </p>
+                </div>
+            </div>
+
+            <div class="module-desc" id="envgen">
+                <h3>Attack-Decay / Attack-Release Envelope Generator</h3>
+                <img src="./static/modules/AD-AR-EG.PNG" alt="envelope gen">
+                <div class="details">
+                    <p>
+                        <strong>EAGLE files:</strong>
+                        <a href="https://github.com/mkfarrow/Eurorack_Ian-Fritz-EG">AD/AR EG Github repo</a>
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        This is a versatile envelope generator which can generate envelopes from trigger or gate signals at the CV input.
+                        When the switch is set to "Gate", the envelope will be an attack-release envelope. When switched to "Trig", it generates
+                        attack-decay envelopes.
+                    </p>
+                    <p>
+                        The implementation of this module draws heavily from a schematic designed by Ian Fritz. See below for more information.
+                    </p>
+                    <p>
+                        <strong>See also:</strong><br>
+                    <ul>
+                        <li><a href="https://electro-music.com/wiki/pmwiki.php?n=Schematics.AD-ARByIanFritz">Ian Fritz AD-AR schematic</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Envelope_(music)">ADSR Envelopes on Wikipedia</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module-desc" id="dualvca">
+                <h3>Dual Linear Voltage-Controlled Amplifier</h3>
+                <img src="./static/modules/dual-vca.png" alt="dual vca">
+                <div class="details">
+                    <p>
+                        <strong>EAGLE files:</strong>
+                        <a href="https://github.com/mkfarrow/Eurorack_DualVCA">Dual VCA Github repo</a>
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        This module features two independent, high-fidelity voltage-controlled amplifiers which can be used
+                        for the amplification of CV or audio signals. The gain of each amplifier can vary between negative infinity
+                        (silence) and x2. Since the amplifier is capable of exceeding unity gain, it can be used to overdrive audio
+                        signals.
+                    </p>
+                    <p>
+                        The gain knob sets the gain for each channel. Fully counter-clockwise is negative infinity (silence at the output),
+                        and fully clockwise is a gain of two. The CV input works with any voltage between -10V and 10V. The voltage appearing
+                        at the CV input will add to the current position of the gain potentiometer.
+                    </p>
+                    <p>
+                        <strong>See also:</strong><br>
+                    <ul>
+                        <li><a href="https://www.electro-smith.com/electro-boards/2164-vca">Electro-smith's "2164" submodule</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Variable-gain_amplifier">VCAs on Wikipedia</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module-desc" id="lpf">
+                <h3>Low Pass Filter (24 dB per octave slope)</h3>
+                <img src="./static/modules/LPF-ssm2044.PNG" alt="digital reverb module">
+                <div class="details">
+                    <p>
+                        <strong>EAGLE files:</strong>
+                        <a href="https://github.com/mkfarrow/Eurorack_Low-Pass-Filter">Low Pass Filter Github repo</a>
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        This is a 4-pole (24dB per octave) low-pass filter based around a reissue of the classic SSM2044 filter IC.
+                        This chip has provided the filter section for many famous poly synths. The two audio inputs are mixed and then filtered.
+                    </p>
+                    <p>
+                        Both the cutoff frequency and the resonance level can be controlled via the potentiometers as well as by
+                        applying control voltage signals to the CV inputs.
+                    </p>
+                    <p>
+                        <strong>See also:</strong> <a href="https://www.electro-smith.com/electro-boards/2144-lpf-v2">Electro-smith's 2144 LPF submodule</a>
+                    </p>
+                </div>
+            </div>
+            <div class="module-desc" id="mult">
+                <h3>Buffered Multiples</h3>
+                <img src="./static/modules/buffered-mult.PNG" alt="mult module">
+                <div class="details">
+                    <p>
+                        Download the <code>.brd</code> file for the panel here:
+                        <a href="./static/modules/Mult_panel.brd">Buffered Multiples panel</a> (right click, save as)
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        This module contains three buffered 1-to-3 multiples. The signal applied to an input socket will apear as a
+                        buffered signal at each of the three outputs. Each output is driven by its own buffer (i.e. the outputs are
+                        not connected to each other).
+                    </p>
+                    <p>
+                        The input of the second multiple is normalled to the output of the first multiple, and likewise the third input
+                        is normalled to the output of the second multiple. This means that when only a single input is patched, the unit
+                        works as a 1-to-9 buffered multiple.
+                    </p>
+                    <p>
+                        The LED indicators are bi-color LEDs and thus are red when the signal is negative and green when the signal is
+                        positive. The buffers are implemented using the classic low-noise op-amp, TL074, and the design is heavily influenced
+                        by the Mutable Instruments module Links (see below).
+                    </p>
+                    <p>
+                        <strong>See also:</strong><br>
+                    <ul>
+                        <li><a href="https://github.com/pichenettes/eurorack/tree/master/links/hardware_design">Mutable Instruments Links Github</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module-desc" id="digiverb">
+                <h3>Digital Reverb BTDR-3</h3>
+                <img src="./static/modules/BTDR-3_digital-reverb.PNG" alt="digital reverb module">
+                <div class="details">
+                    <p>
+                        Files: coming soon
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        This is a monophonic digital reverb effects module. The "Reverb Level" control determines the amount of reverb
+                        signal which appears at the mix output. The "Wet" output contains only the reverb signal. This can be useful
+                        for creating interesting mixes e.g. by sending the Wet output to a VCA whose amplitude is controlled by a
+                        rhythmic envelope.
+                    </p>
+                    <p>
+                        The reverb effect is implemented using BTDR-3 integrated circuit made by Belton/Accu-Bell.
+                        See the <a href="http://www.belton.co.kr/product/product.html?code=002">BTDR-3 datasheet here</a>.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="module-desc" id="matrix">
+                <h3>4x4 Matrix Mixer</h3>
+                <img src="./static/modules/matrix-mixer.png" alt="digital reverb module">
+                <div class="details">
+                    <p>
+                        Download the <code>.brd</code> file for the panel here:
+                        <a href="./static/modules/Matrix-Mixer-Panel.brd">Matrix Mixer panel</a> (right click, save as)
+                    </p>
+                    <p class="specs"><strong>12HP</strong>, +/-12V</p>
+                    <p>
+                        This design is merely a panel for a module designed by forestcaver (see below).
+                        The module is heavily influenced by Doepfer's A-138m Matrix Mixer, but is only
+                        12HP (instead of 20HP) wide due to its use of surface-mounted devices.
+                    </p>
+                    <p>
+                        <strong>See also:</strong><br>
+                    <ul>
+                        <li><a href="https://github.com/forestcaver/Analog-Voice">Forest Caver's Analog Voice Github repository</a></li>
+                        <li><a href="https://doepfer.de/A138m.htm">Doepfer A-138m Matrix Mixer</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module-desc" id="spring">
+                <h3>Spring Reverb Interface (USA version of Music Thing Modular's)</h3>
+                <img src="./static/modules/mtm-spring.PNG" alt="digital reverb module">
+                <div class="details">
+                    <p>
+                        <strong>Files:</strong>
+                    <ul>
+                        <li>
+                            <a href="./static/modules/SpringReverbRev2_combined.sch">USA MTM Spring Reverb <code>.sch</code> file</a>
+                            (right click, save as)
+                        </li>
+                        <li>
+                            <a href="./static/modules/SpringReverbRev2_combined.brd">USA MTM Spring Reverb <code>.brd</code> file</a>
+                            (right click, save as)
+                        </li>
+                    </ul>
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        Credit for this design goes entirely to Tom Whitwell at
+                        <a href="https://www.musicthing.co.uk/">Music Thing Modular</a>.
+                        I learned so much from his writeups about spring reverb tanks.
+                        All I did here was slightly rework the design of the PCB to use
+                        components that are more readily available in the USA.
+                    </p>
+                    <p>
+                        <strong>See also:</strong><br>
+                    <ul>
+                        <li><a href="https://medium.com/music-thing-modular-notes/everything-i-know-about-spring-reverb-1fb4b32abf87">Tom's Spring Reverb writeup on Medium.com</a></li>
+                        <li><a href="https://github.com/TomWhitwell/Spring-Reverb-Mk-2">MTM's Spring Reverb Mk2 Github repo</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="module-desc" id="shades">
+                <h3>Shades "In Memoriam"</h3>
+                <img src="./static/modules/shades.PNG" alt="shades">
+                <div class="details">
+                    <p>
+                        Download the <code>.brd</code> file for the panel here: <a href="./static/modules/Shades-Panel.brd">Shades panel</a>
+                        (right click, save as)
+                    </p>
+                    <p class="specs"><strong>4HP</strong>, +/-12V</p>
+                    <p>
+                        So many of us in the modular synth (and specifically Eurorack) world owe a great debt to Mutable Instruments for making all of their designs completely open source, myself included. I learned so much from studying their hardware design and reading their code. I made this module now that Mutable Instruments has officially closed down. It is a clone of the classic utility mixer, offset, inverter module Shades.
+                    </p>
+                    <p>
+                        I designed this panel so that I could rework the PCBs from Karltron's Shady
+                        (a through-hole clone of Shades, see below) to use the same switches
+                        and other hardware used by Mutable Instruments, and so that the module would
+                        more closely resemble the Mutable Instruments original.
+                    </p>
+                    <p>
+                        <strong>See also:</strong><br>
+                    <ul>
+                        <li><a href="https://github.com/pichenettes/eurorack/tree/master/shades/hardware_design">Mutable Instruments Github repository for Shades</a></li>
+                        <li><a href="https://karltron.com/shady/">Karltron Shady</a></li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+            <h2>Miscellaneous Utilities</h2>
+
+            <div class="module-desc misc" id="preamp">
+                <h3>Balanced, Phantom-powered Microphone Pre-amp</h3>
+                <img src="./static/modules/smd_mic-preamp.png" alt="SMD mic preamp">
+                <div class="details">
+                    <p class="specs">
+                        <strong>Dimensions of PCB populated with all SMD:</strong>
+                         <em>21mm x 30mm x 8mm</em>
+                    </p>
+                    <p>
+                        <strong>Design files:</strong>
+                    </p>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://sound-au.com/p93-f6.gif">Schematic</a>
+                        </li>
+                        <li>
+                            <a target="_blank"  href="https://github.com/mkfarrow/SMD-Balanced-Mic-Preamp">SMD Balanced Mic Preamp Github repository</a>
+                        </li>
+                    </ul>
+                    <p>
+                        This is a pre-amp for an electret microphone which operates on phantom power and delivers a balanced output signal. It uses suface-mount devices and is therefore <em>incredibly small</em> and can easily fit inside the enclosure of a Shure SM57. The pre-amp is implemented by two transistors arranged as a Class-A op-amp.
+                    </p>
+                    <p>
+                        The schematic I used is from Rod Elliott of <a href="https://sound-au.com/">Elliott Sound Products</a>. According to Rod, "open loop frequency response is within 1dB from 2Hz to just under 30kHz". The pre-amp is perfect for driving almost any electret microphone as well as any other microphone that uses phantom power.
+                    </p>
+                    <p class="clear">
+                        <strong>See also:</strong>
+                    </p>
+                    <ul>
+                        <li><a href="https://sound-au.com/articles/p-48.htm">Phantom Power - What It Is And How It Works</a></li>
+                        <li><a href="https://sound-au.com/articles/mic-electret.htm">Electret Microphones - Powering & Uses</a></li>
+                        <li><a href="https://sound-au.com/project93.htm">ESP Project #93</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="module-desc misc" id="busboard">
+                <h3>Eurorack Busboard</h3>
+                <img class="bboard" src="./static/modules/BusBoard-with5v.png" alt="busboard">
+                <div class="details">
+                    <p class="specs">
+                        <strong>Dimensions of bare PCB:</strong>
+                         <em>355mm x 50mm</em>
+                    </p>
+                    <p>
+                        <strong>KiCad files:</strong>
+                        <a href="https://github.com/mkfarrow/Eurorack-Busboard">Eurorack Busboard Github repo</a>
+                    </p>
+                    <p>
+                        This is the first PCB I ever designed and it is a design that has seen much use. A busboard for a
+                        Eurorack synthesizer system that includes an optional 5v power supply on the busboard.
+                        The busboard has nineteen IDC headers which means it has room to power nineteen Eurorack modules.
+                    </p>
+                    <p>
+                        Connections from the power supply can be made either using quick connect terminals or using 
+                        JST-XH (or similar) connectors.
+                    </p>
+                    <p>
+                        Stay tuned for improvements in future versions!
+                    </p>
+                    <p class="clear">
+                        <strong>See also:</strong>
+                    </p>
+                    <ul>
+                        <li><a href="https://sound-au.com/articles/p-48.htm">Doepfer A-100 Technical Details</a></li>
+                        <li><a href="https://sound-au.com/articles/mic-electret.htm">Doepfer A-100 Construction Details</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="module-desc misc" id="softstart">
+                <h3>Power-On Delay aka "Soft Start" Timer</h3>
+                <img class="softstart" src="./static/modules/softstart.png" alt="soft start submodule">
+                <div class="details">
+                    <p class="specs">
+                        <strong>Dimensions of bare PCB:</strong> 
+                        <em>50mm x 28mm</em>
+                        <br>
+                        <strong>Formula for delay time:</strong>
+                        T (sec) = 1.1 * R1 * C1 <br>
+                        <em>Values shown: T = 1.1 * 47,000 Ω * 0.000047 F = <strong>2.42 seconds</strong></em>
+                    </p>
+                    <p>
+                        <strong>EAGLE files:</strong>
+                        <a href="https://github.com/mkfarrow/Soft-Start-Module">Soft Start Github repo</a>
+                    </p>
+                    <p>
+                        It is very common for synthesizer modules to make heavy use of bypass capacitors - large electrolytic capacitors
+                        are found between almost every power rail and ground, and there are always smaller bypass caps close to the
+                        power pins of every IC. In general this is a good practice to smooth out
+                        ripples in the DC and ensure a more consistent power supply to your op-amps and other ICs. However, this means that when
+                        a synthesizer is powered on there can be a very large inrush current which can be
+                        overwhelming even for a robust power supply.
+                    </p>
+                    <p>
+                        For most analog synthesizer modules, temporary power supply lags due to large inrush current do not present a problem.
+                        Some digital synth modules however, especially those implemented with microcontrollers and/or
+                        microprocessors, will fail if their required current and voltage cannot be supplied immediately
+                        when powered (i.e. they are not tolerant to "brownout" conditions). Some microcontrollers account
+                        for this with a "brownout reset" which puts the device into a reset state to ensure proper startup
+                        when power returns. Not all microcontrollers and consequently not all synthesizer modules are able to
+                        properly account for "brownout" conditions which can result in modules not functioning properly or at all.
+                        Further, relying on a microcontroller to detect and properly handle "brownout" is a tenuous solution and
+                        not one that a musician can rely upon for a performance.
+                    </p>
+                    <p>
+                        Therefore the best solution to the problem of power supply brownout due to inrush current is one
+                        implemented in hardware. If modules were powered on one-by-one, or in groups, then the large
+                        inrush current could be prevented altogether. That is exactly what this "Power-on Delay" circuit
+                        (also known as a "soft start") does. It is placed between the busboard and a module and allows for a time
+                        delay before the module is powered on.
+                    </p>
+                    <p>
+                        The circuit is implemented using a 555 timer and a 12V relay. The delay time is set by the value of the
+                        resistor R2 and the capacitor C1. The values shown in the schematic result in a delay of about 2.42 seconds.
+                        I use one of these for my 4MS Stereo Triggered Sampler which does not function in my system without it.
+                    </p>
+
+                    <p class="clear">
+                        <strong>See also:</strong><br>
+                    </p>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/555_timer_IC">555 Timer IC on Wikipedia</a></li>
+                        <li>
+                            <a href="https://www.digikey.com/en/products/detail/omron-electronics-inc-emc-div/G6J-2P-Y-DC12/699960?s=N4IgTCBcDaIOIDYBSBaMAFFBNFARAwgIxgAEIAugL5A">Omron 12V DPDT relay</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="clear"></div>
+
+
+        </div>
+        
+    </div>
+
 </body>
+
 </html>
